@@ -1,0 +1,26 @@
+{
+  "name": "open-webapp-bot",
+  "license": "MIT",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "yarn nodemon --exec 'yarn ts-node' ./src/index.ts",
+    "build": "yarn tsc --build",
+    "deploy": "yarn build && yarn serverless deploy",
+    "purge": "yarn serverless remove",
+    "remove-webhook": "",
+    "set-webhook": "yarn telegraf -m setWebhook"
+  },
+  "devDependencies": {
+    "@yandex-cloud/function-types": "^2.0.1",
+    "@yandex-cloud/serverless-plugin": "^1.0.2",
+    "nodemon": "^2.0.20",
+    "serverless": "^3.16.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "serverless-http": "^3.1.1",
+    "telegraf": "^4.11.2"
+  }
+}
