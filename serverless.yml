@@ -3,7 +3,7 @@ frameworkVersion: "3"
 
 provider:
   name: yandex-cloud
-  runtime: nodejs16
+  runtime: nodejs18
   httpApi:
     payload: "1.0"
 
@@ -15,14 +15,14 @@ package:
     - "!**"
     - .env
     - package.json
-    - package-lock.json
-    - dist/*.js
+    # - package-lock.json
+    - dist/**/*.js
 
 functions:
   main:
-    handler: dist/main.handler
+    handler: dist/index.handler
     memorySize: 128
-    timeout: "5"
+    timeout: 5 # seconds
     account: function-sa
     events:
       - http:
@@ -42,10 +42,10 @@ functions:
   #           interval: 10
 
 resources:
-  trigger-sa:
-    type: yc::ServiceAccount
-    roles:
-      - serverless.functions.invoker
+  # trigger-sa:
+  #   type: yc::ServiceAccount
+  #   roles:
+  #     - serverless.functions.invoker
   function-sa:
     type: yc::ServiceAccount
     roles:

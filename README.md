@@ -1,18 +1,37 @@
-# Open Web app bot
+# Open webapp bot
+
+## Setup
+
+- volta
+- nodejs
+- telegraf framework
+- serverless framework
+- yandex cloud serverless plugin
 
 ```sh
-nvm use
-yarn
+volta install node
+pnpm install
 
 # Start development server
-yarn dev
+pnpm dev
+```
 
-# Deploy to production
-yarn deploy
-yarn serverless info
-yarn set-webhook -- -t 'BOT_TOKEN' -D '{ "url": "API_GATE_URL/webhook" }'
+## Deploy
 
-# Clear resource and reset
-yarn purge
-yarn set-webhook -- -t 'BOT_TOKEN' -D '{ "url": "" }'
+```sh
+pnpm build
+pnpm serverless:deploy
+pnpm serverless:info
+pnpm webhook:set
+
+# or just run
+
+pnpm release
+```
+
+Clear resource and reset
+
+```sh
+pnpm purge
+pnpm webhook:remove
 ```
