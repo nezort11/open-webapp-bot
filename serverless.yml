@@ -1,4 +1,4 @@
-service: open-webapp-bot
+service: ${file(./package.json):name}
 frameworkVersion: "3"
 
 provider:
