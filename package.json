@@ -6,7 +6,7 @@
     "node": "18.20.4"
   },
   "scripts": {
-    "dev": "NODE_ENV=development pnpm nodemon --exec 'pnpm ts-node' ./src/bot.ts",
+    "dev": "NODE_ENV=development pnpm nodemon --exec 'pnpm ts-node' ./src/index.ts",
     "build": "pnpm tsc --build",
     "serverless:deploy": "pnpm serverless deploy --stage=prod",
     "serverless:info": "pnpm serverless info --stage=prod",

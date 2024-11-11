@@ -27,7 +27,3 @@ bot.on(message("text"), async (context) => {
     );
   }
 });
-
-if (require.main === module) {
-  bot.launch();
-}
