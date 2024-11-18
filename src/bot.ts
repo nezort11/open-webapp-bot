@@ -1,9 +1,8 @@
 import { Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
-import * as dotenv from "dotenv";
-dotenv.config();
+import { BOT_TOKEN } from "./env";
 
-export const bot = new Telegraf(process.env.BOT_TOKEN as string);
+export const bot = new Telegraf(BOT_TOKEN);
 
 bot.start(async (context) => {
   await context.reply(

@@ -1,10 +1,25 @@
-# Open webapp bot (template)
+# video-translate-backend (template)
+
+- video-translate-bot
+- video-translate-backend
+- video-translate-app
+
+- image-translate-backend
+
+
+- telegraf (nodejs-bot) -serverless-yandex-cloud-template
+- nodejs-api() express-serverless-yandex-cloud-template
+- puppeteer-serverless-yandex-cloud-template
+
+
+
 
 - volta
 - nodejs
 - telegraf framework
 - serverless framework
-- yandex cloud serverless plugin
+- serverless-http
+- yandex-cloud-serverless-plugin
 
 ## Setup
 
@@ -13,6 +28,9 @@
 - install [yc cli](https://yandex.cloud/ru/docs/cli/quickstart)
 
 ```sh
+git clone https://github.com/nezort11/telegraf-serverless-yandex-cloud-template.git your-project-name
+rm -rf ./your-project-name/.git
+
 volta install node@18
 pnpm install
 
