@@ -1,18 +1,4 @@
-# video-translate-backend (template)
-
-- video-translate-bot
-- video-translate-backend
-- video-translate-app
-
-- image-translate-backend
-
-
-- telegraf (nodejs-bot) -serverless-yandex-cloud-template
-- nodejs-api() express-serverless-yandex-cloud-template
-- puppeteer-serverless-yandex-cloud-template
-
-
-
+# video-translate-backend
 
 - volta
 - nodejs
