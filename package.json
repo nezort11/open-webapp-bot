@@ -11,8 +11,8 @@
     "serverless:deploy": "pnpm serverless deploy --stage=prod",
     "serverless:info": "pnpm serverless info --stage=prod",
     "serverless:purge": "pnpm serverless remove",
-    "webhook:set": "./set-webhook.sh",
-    "webhook:remove": "./remove-webhook.sh",
+    "webhook:set": "./scripts/set-webhook.sh",
+    "webhook:remove": "./scripts/remove-webhook.sh",
     "release": "pnpm build && pnpm serverless:deploy && pnpm webhook:set"
   },
   "dependencies": {
