@@ -1,4 +1,4 @@
-# Serverless telegraf yandex cloud bot template
+# Open webapp bot
 
 - volta
 - nodejs
