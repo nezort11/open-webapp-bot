@@ -15,7 +15,8 @@
 
 ```sh
 git clone https://github.com/nezort11/telegraf-serverless-yandex-cloud-template.git your-project-name
-rm -rf ./your-project-name/.git
+cd ./your-project-name
+rm -rf .git
 
 volta install node@18
 pnpm install
