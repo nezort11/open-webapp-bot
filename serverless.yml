@@ -16,11 +16,11 @@ package:
     - .env
     - package.json
     # - package-lock.json
-    - dist/**/*.js
+    - build/**/*.js
 
 functions:
   main:
-    handler: dist/index.handler
+    handler: build/index.handler
     memorySize: 128
     timeout: 5 # seconds
     account: function-sa
@@ -30,7 +30,7 @@ functions:
           method: post
 
   # timer:
-  #   handler: dist/index.hello
+  #   handler: build/index.hello
   #   memorySize: 128
   #   timeout: '5'
   #   events:
