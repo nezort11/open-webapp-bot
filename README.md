@@ -1,4 +1,4 @@
-# video-translate-backend
+# Serverless telegraf yandex cloud bot template
 
 - volta
 - nodejs
