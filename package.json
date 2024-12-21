@@ -14,13 +14,18 @@
     "run:ts": "pnpm command:ts .",
     "run:deamon": "pnpm nodemon --exec \"pnpm command:ts\" --watch \"./.env\" --watch \"./src\" .",
     "dev": "NODE_ENV=development pnpm run:deamon",
+    "dev:prod": "NODE_ENV=production pnpm run:deamon",
+    "start": "NODE_ENV=production pnpm run:js",
+    "start:dev": "NODE_ENV=development pnpm run:js",
     "build": "pnpm tsc --build",
     "serverless:deploy": "pnpm serverless deploy --stage=prod",
     "serverless:info": "pnpm serverless info --stage=prod",
     "serverless:purge": "pnpm serverless remove",
+    "webhook:info": "./scripts/get-webhookinfo.sh",
     "webhook:set": "./scripts/set-webhook.sh",
-    "webhook:remove": "./scripts/remove-webhook.sh",
-    "release": "pnpm build && pnpm serverless:deploy && pnpm webhook:set"
+    "webhook:delete": "./scripts/delete-webhook.sh",
+    "bot:deploy": "pnpm build && pnpm serverless:deploy && pnpm webhook:set",
+    "bot:purge": "pnpm serverless:purge && pnpm webhook:delete"
   },
   "dependencies": {
     "@types/node": "^22.9.0",

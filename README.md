@@ -28,7 +28,7 @@ pnpm dev
 ## Deploy
 
 ```sh
-pnpm release
+pnpm bot:deploy
 
 # or
 
@@ -41,6 +41,9 @@ pnpm webhook:set
 Clear resource and reset
 
 ```sh
-pnpm purge
-pnpm webhook:remove
+pnpm bot:purge
+
+# or
+pnpm serverless:purge
+pnpm webhook:delete
 ```

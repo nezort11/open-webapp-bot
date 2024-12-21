@@ -22,7 +22,7 @@ functions:
   main:
     handler: build/index.handler
     memorySize: 128
-    timeout: 5 # seconds
+    timeout: 30 # seconds
     account: function-sa
     events:
       - http:

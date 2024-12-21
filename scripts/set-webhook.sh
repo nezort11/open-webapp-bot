@@ -4,18 +4,18 @@ set -a
 source .env
 set +a
 
-YANDEX_CLOUD_API_GATEWAY_REGEX='https://.*apigw.yandexcloud.net/'
+YANDEX_CLOUD_API_GATEWAY_URL_REGEX='https://.*apigw.yandexcloud.net/'
 
 # Store the output of the "pnpm serverless info" command in a variable
-output=$(pnpm serverless:info 2>&1 > /dev/null)
+SERVERLESS_FUNCTION_INFO=$(pnpm serverless:info 2>&1 > /dev/null)
 
 # Use grep to extract the URL value
-url=$(echo $output | grep -o $YANDEX_CLOUD_API_GATEWAY_REGEX)
+SERVERLESS_FUNCTION_API_GATEWAY_URL=$(echo $SERVERLESS_FUNCTION_INFO | grep -o $YANDEX_CLOUD_API_GATEWAY_URL_REGEX)
 
 # Append "/webhook" to the URL value
-webhook_url="${url}webhook"
+BOT_WEBHOOK_URL="${SERVERLESS_FUNCTION_API_GATEWAY_URL}webhook"
 
-echo "Setting webhook url to $webhook_url..."
+echo "Setting bot webhook url to $BOT_WEBHOOK_URL..."
 
-# Execute the "pnpm set-webhook" command with the extracted URL value
-pnpm telegraf -m setWebhook -t $BOT_TOKEN -D "{ \"url\": \"$webhook_url\" }"
+# https://core.telegram.org/bots/api#setwebhook
+pnpm telegraf -m setWebhook -t $BOT_TOKEN -D "{ \"url\": \"$BOT_WEBHOOK_URL\" }"
