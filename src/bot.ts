@@ -2,7 +2,16 @@ import { Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
 import { BOT_TOKEN } from "./env";
 
-export const bot = new Telegraf(BOT_TOKEN);
+export const bot = new Telegraf(BOT_TOKEN, {
+  // REQUIRED for `sendChatAction` to work in serverless/webhook environment https://github.com/telegraf/telegraf/issues/1047
+  telegram: { webhookReply: false },
+});
+
+bot.use(async (context, next) => {
+  await context.persistentChatAction("typing", async () => {
+    await next();
+  });
+});
 
 bot.start(async (context) => {
   await context.reply(

@@ -2,10 +2,10 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./build",
-    "target": "ESNext", // emit version
-    "module": "CommonJS", // emit module
+    "target": "ES2019", // emit version (Nodejs 14+)
+    "module": "CommonJS", // emit module (CommonJS)
     "lib": ["ESNext", "DOM"], // transpile version
-    "moduleResolution": "Node" /* (CommonJS) */, // transpile module
+    "moduleResolution": "Node", // transpile module (CommonJS)
     "esModuleInterop": true,
     "allowJs": true,
     "declaration": false,

@@ -7,7 +7,7 @@
   },
   "main": "./src/index.ts",
   "scripts": {
-    "push": "git push origin main:main && git push template main:main",
+    "git:push": "git push origin main:main && git push template main:main",
     "command:js": "DEBUG='*' node",
     "command:ts": "DEBUG='*' pnpm tsx",
     "run:js": "pnpm command:js ./build/index.js",
@@ -32,10 +32,9 @@
     "dotenv": "16.4.4",
     "serverless": "3.16.0",
     "serverless-http": "3.2.0",
-    "telegraf": "4.11.2"
+    "telegraf": "4.16.3"
   },
   "devDependencies": {
-    "@yandex-cloud/function-types": "2.0.1",
     "@yandex-cloud/serverless-plugin": "1.7.25",
     "nodemon": "2.0.20",
     "tsx": "^4.19.2",
