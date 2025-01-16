@@ -29,6 +29,7 @@ bot.on(message("text"), async (context) => {
       },
     });
   } catch (error) {
+    console.error(error);
     await context.telegram.sendMessage(
       context.chat.id,
       "Please provide a valid HTTPS URL."
