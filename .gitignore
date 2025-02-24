@@ -1,4 +1,13 @@
-node_modules
+node_modules*
 build
-.serverless
+*.zip
 .env
+
+tsconfig.tsbuildinfo
+package-lock.json
+
+# Terraform
+.terraform
+*.tfstate*
+
+.DS_Store

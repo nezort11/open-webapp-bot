@@ -18,6 +18,19 @@
     "start": "NODE_ENV=production pnpm run:js",
     "start:dev": "NODE_ENV=development pnpm run:js",
     "build": "pnpm tsc --build",
+    "npm:install": "npm install --omit=dev --force",
+    "npm:pre": "mv ./node_modules ./node_modules_dev && mv ./node_modules_prod ./node_modules 2>/dev/null ; mkdir -p node_modules",
+    "npm:post": "mv ./node_modules ./node_modules_prod && mv ./node_modules_dev ./node_modules",
+    "npm:reinstall": "pnpm npm:pre && pnpm npm:install && pnpm npm:post",
+    "app:package": "zip -r ./open-webapp-bot.zip ./package.json ./node_modules ./.env ./build",
+    "app:ci": "pnpm build && pnpm npm:pre && pnpm app:package && pnpm npm:post",
+    "tf": "source ./.env && terraform",
+    "app:cd": "pnpm app:ci && pnpm tf apply -auto-approve",
+    "webhook:info": "source ./.env && pnpm telegraf -m getWebhookInfo -t $BOT_TOKEN",
+    "webhook:set": "source ./.env && pnpm telegraf -m setWebhook -t $BOT_TOKEN -D \"{ \\\"url\\\": \\\"https://$(terraform output -raw open_webapp_bot_gateway_domain)/webhook\\\", \\\"drop_pending_updates\\\": \\\"True\\\" }\"",
+    "webhook:delete": "source ./.env && pnpm telegraf -m deleteWebhook -t $BOT_TOKEN"
+  },
+  "comments": {
     "serverless:deploy": "pnpm serverless deploy --stage=prod",
     "serverless:info": "pnpm serverless info --stage=prod",
     "serverless:purge": "pnpm serverless remove",
@@ -30,12 +43,10 @@
   "dependencies": {
     "@types/node": "^22.9.0",
     "dotenv": "16.4.4",
-    "serverless": "3.16.0",
     "serverless-http": "3.2.0",
     "telegraf": "4.16.3"
   },
   "devDependencies": {
-    "@yandex-cloud/serverless-plugin": "1.7.25",
     "nodemon": "2.0.20",
     "tsx": "^4.19.2",
     "typescript": "5.6.3"
